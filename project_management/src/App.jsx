@@ -1,33 +1,32 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+// Project: project_management
+// File: /Users/deven/Developer/react_projects/project_management/src/App.jsx
+
+import React from 'react'
+//import { useState } from 'react'
+//import reactLogo from './assets/react.svg'
+//import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+const canDrive = (age) => age>=18?"Sarah can Drive": "Can drive after " +  (18-age) + "  years"; 
 
+function App() {
+  //const [count, setCount] = useState(0)
+  const [age,setAge] = React.useState(0);
+  const handleChange = (event) => {
+    //event.preventDefault();
+    setAge(event.target.value);
+  }
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className='container'>
+      <h1>Hi</h1>
+      <form>
+      <label htmlFor='something'>Input age</label>
+      <input type="number" id="something" onChange={handleChange} />
+      <button type='submit' onClick={handleChange}>Submit</button>
+      </form>
+       {canDrive(age)}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
